@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Main {
 
@@ -9,8 +10,9 @@ public class Main {
         list.add(new Person("Иисус", "Христос", 33));
         list.add(new Person("Стас", "Барецкий", 50));
         list.add(new Person("Абрахам", "Ван Хель Синг", 3));
-        Collections.sort(list, new PersonComparator(1));
-        System.out.println(list);
+        list.add(new Person("Васька", "Колбаськин", 1));
+        Predicate<Person> predicate = (person) -> person.getAge() < 18;
+        list.removeIf(predicate);
         Collections.sort(list, new PersonComparator(3));
         System.out.println(list);
 
